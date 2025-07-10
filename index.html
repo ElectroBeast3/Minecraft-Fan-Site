@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Fan Site</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=58DjyIxZOnqg&format=png&color=000000" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #2e7d32;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      padding: 100px 20px;
+      background: url('https://tse2.mm.bing.net/th/id/OIP.dcDApR5k00bCVoN5ZJBfrQHaEo') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-blend-mode: multiply;
+      position: relative;
+    }
+
+    button {
+      background-color: #3e8e41;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 16px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #2e7031;
+    }
+
+    #tip {
+      margin-top: 30px;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 8px;
+      display: inline-block;
+      animation: pop 0.4s ease-out;
+    }
+
+    @keyframes pop {
+      0% {transform: scale(0.8); opacity: 0;}
+      100% {transform: scale(1); opacity: 1;}
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: limegreen;
+      animation: explode 0.6s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      0% {transform: scale(1); opacity: 1;}
+      100% {transform: translate(var(--x), var(--y)) scale(0); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Minecraft Fan Page</h1>
+    <p>Your blocky adventure starts here!</p>
+    <button onclick="showTip(event)">Show Minecraft Tip</button>
+    <p id="tip"></p>
+  </div>
+
+  <script>
+    const tips = [
+      "Always bring a water bucket to stop lava or break falls.",
+      "Use a bed to skip the night and avoid monsters.",
+      "Don't dig straight down!",
+      "A shield is very effective against skeletons.",
+      "Use torches to keep mobs from spawning.",
+      "Villagers can trade valuable items—protect them!",
+      "Use F3 in Java Edition to see coordinates and biome info."
+    ];
+
+    function showTip(e) {
+      const tipElement = document.getElementById('tip');
+      const randomTip = tips[Math.floor(Math.random() * tips.length)];
+      tipElement.textContent = randomTip;
+      tipElement.style.animation = 'pop 0.4s ease-out';
+
+      // 💥 Create explosion particles
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const x = (Math.random() - 0.5) * 200 + 'px';
+        const y = (Math.random() - 0.5) * 200 + 'px';
+        particle.style.setProperty('--x', x);
+        particle.style.setProperty('--y', y);
+        particle.style.left = `${e.clientX}px`;
+        particle.style.top = `${e.clientY}px`;
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 600);
+      }
+
+      // 🎵 Optional creeper sound (uncomment if you have file)
+      // let boom = new Audio('creeper-boom.mp3');
+      // boom.play();
+    }
+  </script>
+</body>
+</html>
