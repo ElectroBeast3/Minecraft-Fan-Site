@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shameem — Portfolio</title>
   <meta name="description" content="Shameem | Coding enthusiast who loves Minecraft & Free Fire. Cricket and swimming fan." />
-
-  <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="https://wallpapersafari.com/image/popular-anime-4k-wallpapers.jpg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg: #0b1220;
@@ -78,8 +73,10 @@
     .social{display:flex;gap:8px}
     .chip{padding:8px 12px;border:1px solid rgba(148,163,184,.18);border-radius:999px}
 
+    /* Smooth scrolling */
     html{scroll-behavior:smooth}
 
+    /* NEW - Scroll to top button */
     #scrollTopBtn {
       position: fixed;
       bottom: 30px;
@@ -106,6 +103,7 @@
       pointer-events: auto;
     }
 
+    /* Small screens */
     @media (max-width: 840px){
       .hero-inner{grid-template-columns:1fr}
     }
@@ -124,10 +122,14 @@
     </div>
   </footer>
 
+  <!-- NEW - Scroll to top button -->
   <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
 
   <script>
+    // Update year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // NEW - Scroll to top logic
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
