@@ -3,320 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minecraft Fan Site</title>
+  <title>Shameem — Portfolio</title>
+  <meta name="description" content="Shameem | Coding enthusiast who loves Minecraft & Free Fire. Cricket and swimming fan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    :root{
+      --bg: #0b1220;
+      --card: #111a2e;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --accent: #4f46e5;
+      --accent-2: #22c55e;
+      --ring: rgba(79,70,229,.45);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --container: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background: radial-gradient(1200px 600px at 20% -10%, rgba(79,70,229,.18), transparent),
+                                     radial-gradient(900px 500px at 100% 10%, rgba(34,197,94,.16), transparent),
+                                     var(--bg); color:var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #1e1e1e;
-      color: white;
-      background-image:
-        radial-gradient(rgba(46, 68, 45, 0.2) 1px, transparent 1px),
-        radial-gradient(rgba(46, 68, 45, 0.2) 1px, transparent 1px);
-      background-position: 0 0, 25px 25px;
-      background-size: 50px 50px;
-      text-align: center;
+    .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter: blur(10px); background: rgba(11,18,32,.6); border-bottom:1px solid rgba(148,163,184,.12); z-index: 50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center; box-shadow: var(--shadow)}
+    .logo span{font-weight:800}
+    .menu{display:flex;gap:18px}
+    .menu a{padding:8px 12px;border-radius:12px;transition:.2s}
+    .menu a:hover{background: rgba(148,163,184,.12)}
+
+    .hero{padding:72px 0 28px}
+    .hero-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border:1px solid rgba(148,163,184,.14);border-radius:var(--radius);padding:28px; box-shadow: var(--shadow)}
+    .tag{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.18);background: rgba(148,163,184,.08);font-size:12px;color:var(--muted)}
+    h1{font-size:44px;line-height:1.1;margin:14px 0 12px}
+    p.lead{font-size:18px;color:#cbd5e1;margin:0}
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:12px 16px;border-radius:14px;border:1px solid rgba(148,163,184,.2);display:inline-flex;align-items:center;gap:8px;font-weight:600}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#7c3aed); border-color: transparent}
+    .btn:hover{transform: translateY(-1px)}
+
+    .pfp{aspect-ratio:1/1;border-radius:16px;background: conic-gradient(from 200deg, rgba(79,70,229,.2), rgba(34,197,94,.2)); padding:10px}
+    .pfp .inner{height:100%;border-radius:12px;background:#0b1220;display:grid;place-items:center;overflow:hidden}
+    .pfp img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+
+    section{padding:40px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+
+    .feature{grid-column: span 12;}
+    @media (min-width: 900px){
+      .feature{grid-column: span 6}
     }
 
-    header {
-      background: url('https://media.forgecdn.net/avatars/thumbnails/1191/101/256/256/638765934169805440.png') center/cover no-repeat;
-      padding: 80px 20px;
-      color: #d9d9d9;
-      text-shadow: 3px 3px 6px #000;
-    }
+    .kicker{font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+    h2{margin:8px 0 10px;font-size:28px}
 
-    header h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 3.5rem;
-      margin: 0;
-      letter-spacing: 5px;
-    }
+    .list{display:grid;gap:12px;margin-top:10px}
+    .list .row{display:flex;align-items:center;gap:12px}
+    .dot{width:10px;height:10px;border-radius:50%;background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.1)); border:1px solid rgba(148,163,184,.25)}
 
-    header p {
-      font-size: 1.6rem;
-      margin-top: 10px;
-    }
+    footer{padding:28px 0 60px;border-top:1px solid rgba(148,163,184,.12);color:var(--muted)}
+    .foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+    .social{display:flex;gap:8px}
+    .chip{padding:8px 12px;border:1px solid rgba(148,163,184,.18);border-radius:999px}
 
-    nav {
-      background-color: #333;
-      padding: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+    /* Smooth scrolling */
+    html{scroll-behavior:smooth}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 18px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #2ea44f;
-    }
-
-    section {
-      padding: 45px 20px;
-      max-width: 1000px;
-      margin: auto;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      text-align: left;
-    }
-
-    section.alt {
-      background: #2d2d2d;
-      border-radius: 10px;
-      text-align: left;
-    }
-
-    h2 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #2ea44f;
-      letter-spacing: 2px;
-      text-align: center;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      border: 3px solid #555;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-    }
-
-    .mobs {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .mob-card {
-      background: #2d2d2d;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .mob-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .mob-card:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background-color: #111;
-      color: #ccc;
-      padding: 20px;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    footer a {
-      color: #2ea44f;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-
-    footer a:hover {
-      color: #1b5e20;
-    }
-
-    /* Scroll to top button */
-    #scrollTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #2ea44f;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 22px;
-      box-shadow: 0 0 10px #2ea44f;
-      transition: background-color 0.3s;
-      z-index: 10000;
-    }
-
-    #scrollTopBtn:hover {
-      background-color: #22863a;
-    }
-
-    .github-link img {
-      width: 45px;
-      height: 45px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 500px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      nav a {
-        margin: 0 10px;
-        font-size: 1rem;
-      }
-      section {
-        padding: 25px 10px;
-      }
+    /* Small screens */
+    @media (max-width: 840px){
+      .hero-inner{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Minecraft Fan Site</h1>
-  <p>Your hub for everything Minecraft</p>
-  <a href="https://github.com/ElectroBeast3/Minecraft-Fan-Site" target="_blank" class="github-link" title="GitHub Repo">
-    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" />
-  </a>
-</header>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#mobs">Mobs</a>
-  <a href="#blocks">Blocks</a>
-  <a href="#versions">Versions</a>
-  <a href="#tips">Tips & Tricks</a>
-</nav>
-
-<section id="about">
-  <h2>About Minecraft</h2>
-  <p>Minecraft is a sandbox video game developed by Mojang Studios where players explore, build, and survive in a blocky, procedurally generated 3D world. It encourages creativity, exploration, and collaboration across many game modes and multiplayer servers.</p>
-</section>
-
-<section id="gallery" class="alt">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="https://media.forgecdn.net/avatars/thumbnails/1191/101/256/256/638765934169805440.png" alt="Minecraft Icon" />
-    <img src="https://i.pinimg.com/originals/c4/3b/8b/c43b8b5f183ce22a14cb8b692514983d.jpg" alt="Minecraft Art" />
-    <img src="https://i.pinimg.com/originals/64/ea/b6/64eab68309f6bf5ce9643f8014a7d1de.jpg" alt="Minecraft House" />
-    <img src="https://i.pinimg.com/originals/dd/5c/cc/dd5cccea4f2e7cec700314b57c3b357b.jpg" alt="Minecraft Landscape" />
-  </div>
-</section>
-<section id="mobs">
-  <h2>Popular Mobs</h2>
-  <div class="mobs">
-    <div class="mob-card">
-      <img src="https://atlas-content-cdn.pixelsquid.com/stock-images/minecraft-creeper-a8lMmZA-600.jpg" alt="Creeper" />
-      <p><strong>Creeper</strong> – Explosive mob that sneaks up and detonates.</p>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"><span>Σ</span></div>
+        <span>Shameem</span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div class="mob-card">
-      <img src="https://minecraft.wiki/images/thumb/Enderman_Screaming_BE.png/272px-Enderman_Screaming_BE.png?796f1" alt="Enderman" />
-      <p><strong>Enderman</strong> – Tall, teleporting creature that hates being stared at.</p>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="card">
+          <span class="tag">👋 Hi, I’m Shameem</span>
+          <h1>Coding Enthusiast & Gamer</h1>
+          <p class="lead">I love coding and playing games like <strong>Minecraft</strong> and <strong>Free Fire</strong>. When I’m not at the keyboard, you’ll probably find me playing cricket or swimming.</p>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Contact Me</a>
+            <a class="btn" href="#games">View my games</a>
+          </div>
+        </div>
+        <div class="pfp">
+          <div class="inner">
+            <img src="https://cdn.wallpapersafari.com/64/9/D39cFdq.webp" alt="Shameem profile picture">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container grid">
+        <div class="feature card">
+          <div class="kicker">About Me</div>
+          <h2>Who I Am</h2>
+          <p>I’m Shameem — a curious mind who enjoys building things with code and competing in games. I like learning new technologies, solving problems, and sharing what I discover along the way.</p>
+        </div>
+        <div class="feature card">
+          <div class="kicker">Skills & Interests</div>
+          <h2>What I Like Doing</h2>
+          <div class="list">
+            <div class="row"><span class="dot"></span> Coding projects and small apps</div>
+            <div class="row"><span class="dot"></span> Strategy and team play in games</div>
+            <div class="row"><span class="dot"></span> Practicing and improving every day</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <div class="container">
+        <div class="card">
+          <div class="kicker">Hobbies</div>
+          <h2>Off‑Screen Fun</h2>
+          <div class="grid">
+            <div class="feature card">
+              <h3>🏏 Cricket</h3>
+              <p>I love playing cricket — batting, bowling, and working with the team to win matches.</p>
+            </div>
+            <div class="feature card">
+              <h3>🏊 Swimming</h3>
+              <p>Swimming keeps me active and focused. It’s my favorite way to relax and recharge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="container grid">
+        <div class="feature card">
+          <div class="kicker">Games I Play</div>
+          <h2>Minecraft</h2>
+          <p>I enjoy building creative worlds, Redstone contraptions, and mini‑games. Survival and BedWars are my go‑to modes.</p>
+        </div>
+        <div class="feature card">
+          <div class="kicker">Games I Play</div>
+          <h2>Free Fire</h2>
+          <p>Fast matches and smart tactics — I like improving my aim, positioning, and teamwork every season.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card">
+          <div class="kicker">Contact</div>
+          <h2>Let’s Connect</h2>
+          <p class="lead">Want to collaborate or just say hi? Reach out anytime.</p>
+          <div class="cta">
+            <!-- Replace the mailto with your real email -->
+            <a class="btn primary" href="mailto:shameem@example.com">Email Me</a>
+            <!-- Add your real social links below -->
+            <a class="btn" href="#">Instagram</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> Shameem. All rights reserved.</div>
+      <div class="social">
     </div>
-    <div class="mob-card">
-      <img src="https://i.pinimg.com/originals/dd/5c/cc/dd5cccea4f2e7cec700314b57c3b357b.jpg" alt="Herobrine" />
-      <p><strong>Herobrine</strong> – The mythical figure of Minecraft legends.</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<section id="blocks" class="alt">
-  <h2>Blocks</h2>
-  <p>Blocks are the building units of Minecraft. From basic dirt and stone to rare ores like diamonds and netherite, blocks provide materials for crafting, building, and exploration.</p>
-</section>
-
-<section id="versions">
-  <h2>Minecraft Versions</h2>
-  <ul style="text-align:left; max-width: 700px; margin: auto;">
-    <li><strong>Classic (2009):</strong> Early creative mode with basic block placement.</li>
-    <li><strong>Pre-Alpha (2010):</strong> Survival mode added, basic crafting, day-night cycle.</li>
-    <li><strong>Alpha (June 2010 – Dec 2010):</strong> New mobs, multiplayer support, Nether introduced.</li>
-    <li><strong>Beta (Dec 2010 – Nov 2011):</strong> Villages, hunger, new biomes, enchantments added.</li>
-    <li><strong>Release 1.0 (Nov 2011):</strong> Official full release, The End dimension, enchanting, brewing.</li>
-    <li><strong>1.2 (Mar 2012):</strong> Added Jungle biome, Ocelots, iron golems.</li>
-    <li><strong>1.3 (Aug 2012):</strong> Adventure mode, trading, written books.</li>
-    <li><strong>1.4 "Pretty Scary Update" (Oct 2012):</strong> Added Wither, bats, witches, anvils.</li>
-    <li><strong>1.5 "Redstone Update" (Mar 2013):</strong> New redstone components and functionality.</li>
-    <li><strong>1.6 "Horse Update" (Jul 2013):</strong> Added horses, leads, horse armor.</li>
-    <li><strong>1.7 "Update that Changed the World" (Oct 2013):</strong> New biomes, flowers, and world generation.</li>
-    <li><strong>1.8 "Bountiful Update" (Sep 2014):</strong> Added ocean monuments, rabbits, and new blocks.</li>
-    <li><strong>1.9 "Combat Update" (Feb 2016):</strong> New combat mechanics, shields, dual wielding.</li>
-    <li><strong>1.10 (Jun 2016):</strong> Polar bears, husks, and new blocks.</li>
-    <li><strong>1.11 "Exploration Update" (Nov 2016):</strong> Added llamas, woodland mansions.</li>
-    <li><strong>1.12 "World of Color Update" (Jun 2017):</strong> New blocks, parrots, recipe books.</li>
-    <li><strong>1.13 "Update Aquatic" (Jul 2018):</strong> Oceans revamped with new mobs, blocks, and mechanics.</li>
-    <li><strong>1.14 "Village & Pillage" (Apr 2019):</strong> Overhauled villages, new mobs, and blocks.</li>
-    <li><strong>1.15 "Buzzy Bees" (Dec 2019):</strong> Bees and honey blocks added.</li>
-    <li><strong>1.16 "Nether Update" (Jun 2020):</strong> New biomes, mobs, and blocks in the Nether.</li>
-    <li><strong>1.17 "Caves & Cliffs Part 1" (Jun 2021):</strong> New mobs, blocks, and ores.</li>
-    <li><strong>1.18 "Caves & Cliffs Part 2" (Nov 2021):</strong> New world height and terrain generation overhaul.</li>
-    <li><strong>1.19 "The Wild Update" (Jun 2022):</strong> Added mangrove swamps, the Warden mob, frogs, and more.</li>
-    <li><strong>1.20 "Trails & Tales" (Jun 2023):</strong> Introduced archaeology, cherry blossom biome, camels, and sniffer mob.</li>
-    <li><strong>1.21 "Wild Update 2" (Mid 2025 expected):</strong> Upcoming update focusing on wild terrain, new mobs, and quality of life improvements.</li>
-  </ul>
-</section>
-
-<section id="tips" class="alt">
-  <h2>Tips & Tricks</h2>
-  <ul style="text-align:left; max-width: 700px; margin: auto;">
-    <li>Always carry a water bucket to survive falls and lava.</li>
-    <li>Use torches to prevent hostile mobs from spawning nearby.</li>
-    <li>Explore caves carefully; bring plenty of food and weapons.</li>
-    <li>Build a bed early to set your respawn point.</li>
-    <li>Enchant your tools to increase efficiency and durability.</li>
-  </ul>
-</section>
-
-<footer>
-  <p>© 2025 Minecraft Fan Site | Made by ElectroBeast3</p>
-  <p>
-    <a href="https://twitter.com" target="_blank" title="Twitter" aria-label="Twitter">🐦</a>
-    <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook">📘</a>
-    <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram">📸</a>
-  </p>
-</footer>
-
-<button id="scrollTopBtn" title="Go to top">⬆</button>
-
-<script>
-  const scrollBtn = document.getElementById('scrollTopBtn');
-  window.onscroll = function () {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      scrollBtn.style.display = "block";
-    } else {
-      scrollBtn.style.display = "none";
-    }
-  };
-  scrollBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-</script>
-
+  <script>
+    // Update year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
