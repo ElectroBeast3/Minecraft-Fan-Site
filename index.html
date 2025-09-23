@@ -8,9 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Favicon -->
-  <!-- External Favicon from ImgHippo -->
-<link rel="icon" type="image/png" sizes="64x64" href="https://i.imghippo.com/files/RrpN8488qAM.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64x64" href="https://i.imghippo.com/files/RrpN8488qAM.png">
   <style>
     :root{
       --bg: #0b1220;
@@ -46,13 +45,58 @@
       border-bottom:1px solid rgba(148,163,184,.12);
       z-index: 50
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0; position: relative;}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
     .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center; box-shadow: var(--shadow)}
     .logo span{font-weight:800}
+
+    /* Hamburger Menu */
+    #menu-toggle { display: none; }
+    .hamburger {
+      display: none;
+      width: 30px;
+      height: 22px;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      height: 4px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    /* Toggle animation */
+    #menu-toggle:checked + .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    #menu-toggle:checked + .hamburger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked + .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
     .menu{display:flex;gap:18px}
     .menu a{padding:8px 12px;border-radius:12px;transition:.2s}
     .menu a:hover{background: rgba(148,163,184,.12)}
+
+    /* Mobile styles */
+    @media (max-width: 840px){
+      .hamburger { display: flex; flex-direction: column; justify-content: space-between; height: 22px; }
+      .menu {
+        position: absolute;
+        top: 64px;
+        right: 20px;
+        background: var(--card);
+        border: 1px solid rgba(148,163,184,.14);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+        z-index: 100;
+      }
+      /* Show menu when checkbox is checked */
+      #menu-toggle:checked + .hamburger + .menu { display: flex; }
+    }
 
     .hero{padding:72px 0 28px}
     .hero-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
@@ -92,24 +136,11 @@
     .social{display:flex;gap:8px}
     .chip{padding:8px 12px;border:1px solid rgba(148,163,184,.18);border-radius:999px}
 
-    /* Smooth scrolling */
     html{scroll-behavior:smooth}
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
 
-    /* Reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Small screens */
-    @media (max-width: 840px){
-      .hero-inner{grid-template-columns:1fr}
-    }
+    @media (max-width: 840px){ .hero-inner{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -119,6 +150,15 @@
         <div class="logo" aria-hidden="true"><span>Σ</span></div>
         <span>Shameem</span>
       </a>
+
+      <!-- Pure CSS Hamburger -->
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
       <nav class="menu" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#hobbies">Hobbies</a>
@@ -210,7 +250,7 @@
           <div class="cta">
             <a class="btn primary" href="mailto:shameem@example.com">Email Me</a>
             <a class="btn" href="https://www.instagram.com/mythical_beast0/">Instagram</a>
-            <a class="btn" href="https://github.com/ElectroBeast3">GitHub</a>
+            <a class="btn" href="https://github.com/ElectroBeast3/about-me">GitHub</a>
           </div>
         </div>
       </div>
@@ -224,23 +264,17 @@
   </footer>
 
   <script>
-    // Update year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Reveal on scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show");
-          }
+          if (entry.isIntersecting) { entry.target.classList.add("show"); }
+          else { entry.target.classList.remove("show"); }
         });
       },
       { threshold: 0.2 }
     );
-
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   </script>
 </body>
